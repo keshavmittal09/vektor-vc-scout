@@ -12,7 +12,7 @@ export default function SavedView({ savedSearches, setSavedSearches, onRun }) {
         <div className="emp">
           <div style={{ fontSize: 32 }}>🔖</div>
           <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 15, color: "#6b7490" }}>No saved searches</div>
-          <div style={{ fontSize: 12 }}>Type in the top search bar and click "Save Search".</div>
+          <div style={{ fontSize: 12 }}>Type in the top search bar and click &ldquo;Save Search&rdquo;.</div>
         </div>
       )}
 
