@@ -3,7 +3,7 @@
 > Precision AI sourcing platform that turns a fund's thesis into an always-on discovery workflow.
 
 **Live demo:** _[paste your Vercel URL here after deploy]_  
-**GitHub:** _[paste your repo URL here]_
+**GitHub:** [github.com/keshavmittal09/vektor-vc-scout](https://github.com/keshavmittal09/vektor-vc-scout)
 
 ---
 
@@ -187,9 +187,9 @@ vektor-vc-scout/
 | Loading + error states | ✅ |
 | Export company profile as JSON | ✅ |
 | Keyboard shortcut (Enter to create list/save search) | ✅ |
-| Queue / rate limiting | Stretch |
-| Vector similarity search | Stretch |
-| Slack / CRM integrations | Stretch |
+| Queue / rate limiting | ✅ |
+| Vector similarity search | ✅ |
+| Slack / CRM integrations | ✅ (Slack + Email + Copy) |
 | Real-time signal monitoring | Stretch |
 
 ---
@@ -206,7 +206,9 @@ vektor-vc-scout/
 
 - **Framework:** Next.js 14 (Pages Router)
 - **Styling:** Custom CSS (dark theme, Syne + DM Sans from Google Fonts)
-- **AI Extraction:** Anthropic `claude-opus-4-6` via `@anthropic-ai/sdk`
-- **Web Scraping:** Jina AI Reader (`r.jina.ai`) — public pages only
+- **AI Extraction:** Groq / Gemini / Anthropic (configurable via env vars)
+- **Web Scraping:** Jina AI Reader (`r.jina.ai`) — public pages only, with URL routing + retries
+- **Similarity:** TF-IDF vector store with cosine similarity
+- **Integrations:** Slack webhook, email (mailto), clipboard
 - **State:** React `useState` + localStorage
 - **Deploy:** Vercel

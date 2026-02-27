@@ -2,11 +2,32 @@ import { useState } from "react";
 import { IcoPlus, IcoList, IcoDownload, IcoTrash, IcoX, IcoChevD, IcoChevU } from "./Icons";
 
 const scoreColor = (s) => s >= 80 ? "#00d4a0" : s >= 60 ? "#f5a623" : "#f06060";
-const scoreBg    = (s) => s >= 80 ? "rgba(0,212,160,0.12)" : s >= 60 ? "rgba(245,166,35,0.12)" : "rgba(240,96,96,0.12)";
+const scoreBg = (s) => s >= 80 ? "rgba(0,212,160,0.12)" : s >= 60 ? "rgba(245,166,35,0.12)" : "rgba(240,96,96,0.12)";
 
 export default function ListsView({ lists, setLists, onSelectCompany }) {
   const [name, setName] = useState("");
   const [open, setOpen] = useState({});
+  const [slackStatus, setSlackStatus] = useState(null);
+
+  const shareToSlack = async (list) => {
+    setSlackStatus(list.id);
+    try {
+      const res = await fetch("/api/slack", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ list }),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.detail || err.error);
+      }
+      setSlackStatus(list.id + "_ok");
+      setTimeout(() => setSlackStatus(null), 2500);
+    } catch {
+      setSlackStatus(list.id + "_err");
+      setTimeout(() => setSlackStatus(null), 3000);
+    }
+  };
 
   const create = () => {
     if (!name.trim()) return;
@@ -71,6 +92,9 @@ export default function ListsView({ lists, setLists, onSelectCompany }) {
             <div style={{ marginLeft: "auto", display: "flex", gap: 5 }} onClick={e => e.stopPropagation()}>
               <button className="btn btn-ghost btn-sm" onClick={() => exportCSV(list)}><IcoDownload />CSV</button>
               <button className="btn btn-ghost btn-sm" onClick={() => exportJSON(list)}><IcoDownload />JSON</button>
+              <button className="btn btn-ghost btn-sm" onClick={() => shareToSlack(list)} disabled={slackStatus === list.id}>
+                {slackStatus === list.id ? "…" : slackStatus === list.id + "_ok" ? "✓" : "💬"}
+              </button>
               <button className="btn btn-danger btn-sm" onClick={() => deleteList(list.id)}><IcoTrash /></button>
             </div>
             {open[list.id] ? <IcoChevU /> : <IcoChevD />}
