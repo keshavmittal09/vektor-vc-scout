@@ -30,7 +30,7 @@ function SaveModal({ onSave, onClose }) {
   return (
     <div className="ov" onClick={e => e.target === e.currentTarget && onClose()}>
       <div className="modal-center">
-        <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 15, color: "#e0e4f0" }}>
+        <div style={{ fontWeight: 700, fontSize: 16, color: "var(--text-primary)", letterSpacing: '-.02em' }}>
           Save Search
         </div>
         <input
@@ -54,15 +54,15 @@ function SaveModal({ onSave, onClose }) {
 
 /* ── Root Page ───────────────────────────────────────────────────────────── */
 export default function Home() {
-  const [view, setView]         = useState("companies");
+  const [view, setView] = useState("companies");
   const [selected, setSelected] = useState(null);
-  const [lists, setLists]       = useLocalStorage("vk_lists", []);
-  const [saved, setSaved]       = useLocalStorage("vk_saved", []);
-  const [cache, setCache]       = useLocalStorage("vk_enrich", {});
-  const [thesis, setThesis]     = useLocalStorage("vk_thesis", DEFAULT_THESIS);
-  const [toast, setToast]       = useState(null);
+  const [lists, setLists] = useLocalStorage("vk_lists", []);
+  const [saved, setSaved] = useLocalStorage("vk_saved", []);
+  const [cache, setCache] = useLocalStorage("vk_enrich", {});
+  const [thesis, setThesis] = useLocalStorage("vk_thesis", DEFAULT_THESIS);
+  const [toast, setToast] = useState(null);
   const [showSave, setShowSave] = useState(false);
-  const [globalQ, setGlobalQ]   = useState("");
+  const [globalQ, setGlobalQ] = useState("");
 
   const showToast = msg => setToast(msg);
 
@@ -116,7 +116,7 @@ export default function Home() {
             <button className="btn btn-ghost btn-sm" onClick={() => setShowSave(true)}>
               <IcoSave />Save Search
             </button>
-            <div style={{ width: 28, height: 28, borderRadius: "50%", background: "linear-gradient(135deg,#4f7cff,#7b5fff)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 12, color: "#fff", flexShrink: 0 }}>
+            <div style={{ width: 30, height: 30, borderRadius: "50%", background: "linear-gradient(135deg,#2997ff,#bf5af2)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 12, color: "#fff", flexShrink: 0, letterSpacing: '-.02em' }}>
               A
             </div>
           </div>

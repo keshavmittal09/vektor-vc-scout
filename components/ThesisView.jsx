@@ -2,14 +2,14 @@ import { useState } from "react";
 import { MOCK_COMPANIES } from "../lib/mockData";
 import { IcoSave } from "./Icons";
 
-const scoreColor = (s) => s >= 80 ? "#00d4a0" : s >= 60 ? "#f5a623" : "#f06060";
+const scoreColor = (s) => s >= 80 ? '#30d158' : s >= 60 ? '#ff9f0a' : '#ff453a';
 
 export default function ThesisView({ thesis, setThesis, showToast }) {
   const [local, setLocal] = useState(thesis);
   const upd = (k, v) => setLocal(p => ({ ...p, [k]: v }));
 
   const allSectors = [...new Set(MOCK_COMPANIES.map(c => c.sector))].sort();
-  const allStages  = [...new Set(MOCK_COMPANIES.map(c => c.stage))].sort();
+  const allStages = [...new Set(MOCK_COMPANIES.map(c => c.stage))].sort();
   const togArr = (k, v) => setLocal(p => ({ ...p, [k]: p[k].includes(v) ? p[k].filter(x => x !== v) : [...p[k], v] }));
 
   const save = () => { setThesis(local); showToast("Thesis configuration saved"); };
@@ -17,8 +17,8 @@ export default function ThesisView({ thesis, setThesis, showToast }) {
   return (
     <div className="tl">
       <div>
-        <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 17, color: "#e0e4f0" }}>Fund Thesis Configuration</h2>
-        <p style={{ fontSize: 12.5, color: "#3d4258", marginTop: 3 }}>
+        <h2 style={{ fontWeight: 700, fontSize: 18, color: 'var(--text-primary)', letterSpacing: '-.02em' }}>Fund Thesis Configuration</h2>
+        <p style={{ fontSize: 13, color: 'var(--text-tertiary)', marginTop: 4 }}>
           Define your investment parameters. These drive scoring and match explanations across the platform.
         </p>
       </div>
@@ -78,8 +78,8 @@ export default function ThesisView({ thesis, setThesis, showToast }) {
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <input type="range" min={0} max={100} value={local.minScore}
             onChange={e => upd("minScore", Number(e.target.value))}
-            style={{ flex: 1, accentColor: "#4f7cff" }} />
-          <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 18, color: scoreColor(local.minScore), minWidth: 32, textAlign: "right" }}>
+            style={{ flex: 1, accentColor: 'var(--accent)' }} />
+          <span style={{ fontWeight: 800, fontSize: 20, color: scoreColor(local.minScore), minWidth: 32, textAlign: 'right', letterSpacing: '-.03em' }}>
             {local.minScore}
           </span>
         </div>
@@ -90,7 +90,7 @@ export default function ThesisView({ thesis, setThesis, showToast }) {
       </button>
 
       <div style={{ background: "rgba(79,124,255,.07)", border: "1px solid rgba(79,124,255,.18)", borderRadius: 9, padding: "13px 15px", fontSize: 12, color: "#6b7490", lineHeight: 1.7 }}>
-        <div style={{ color: "#4f7cff", fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 9.5, letterSpacing: 1.2, textTransform: "uppercase", marginBottom: 4 }}>
+        <div style={{ color: 'var(--accent)', fontWeight: 700, fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 5 }}>
           How Scoring Works
         </div>
         Scores are computed from sector overlap, stage fit, keyword matches in tags and descriptions, signal quality, and raise alignment to your check size. Every score surfaces plain-language reasons on the company profile — so every recommendation is explainable.

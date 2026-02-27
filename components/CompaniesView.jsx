@@ -2,22 +2,22 @@ import { useState, useEffect } from "react";
 import { MOCK_COMPANIES } from "../lib/mockData";
 import { IcoSearch, IcoChevD, IcoChevU } from "./Icons";
 
-const scoreColor = (s) => s >= 80 ? "#00d4a0" : s >= 60 ? "#f5a623" : "#f06060";
-const scoreBg    = (s) => s >= 80 ? "rgba(0,212,160,0.12)" : s >= 60 ? "rgba(245,166,35,0.12)" : "rgba(240,96,96,0.12)";
+const scoreColor = (s) => s >= 80 ? '#30d158' : s >= 60 ? '#ff9f0a' : '#ff453a';
+const scoreBg = (s) => s >= 80 ? 'rgba(48,209,88,0.12)' : s >= 60 ? 'rgba(255,159,10,0.12)' : 'rgba(255,69,58,0.12)';
 
 const PAGE_SIZE = 12;
 
 export default function CompaniesView({ onSelect, thesis, globalQ }) {
-  const [q, setQ]             = useState(globalQ || "");
-  const [sectors, setSectors]  = useState([]);
-  const [stages, setStages]    = useState([]);
-  const [sort, setSort]        = useState({ col: "thesisScore", dir: "desc" });
-  const [page, setPage]        = useState(1);
+  const [q, setQ] = useState(globalQ || "");
+  const [sectors, setSectors] = useState([]);
+  const [stages, setStages] = useState([]);
+  const [sort, setSort] = useState({ col: "thesisScore", dir: "desc" });
+  const [page, setPage] = useState(1);
 
   useEffect(() => { setQ(globalQ || ""); setPage(1); }, [globalQ]);
 
   const allSectors = [...new Set(MOCK_COMPANIES.map(c => c.sector))].sort();
-  const allStages  = [...new Set(MOCK_COMPANIES.map(c => c.stage))].sort();
+  const allStages = [...new Set(MOCK_COMPANIES.map(c => c.stage))].sort();
 
   const tog = (arr, setArr, v) => {
     setArr(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
@@ -73,8 +73,8 @@ export default function CompaniesView({ onSelect, thesis, globalQ }) {
             Clear filters
           </button>
         )}
-        <div style={{ marginTop: "auto", background: "rgba(79,124,255,.07)", border: "1px solid rgba(79,124,255,.18)", borderRadius: 8, padding: "10px 11px", fontSize: 11.5, color: "#6b7490", lineHeight: 1.6 }}>
-          <div style={{ color: "#4f7cff", fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 10, letterSpacing: 1, textTransform: "uppercase", marginBottom: 3 }}>{thesis.fundName}</div>
+        <div style={{ marginTop: "auto", background: "rgba(41,151,255,.06)", border: "1px solid rgba(41,151,255,.12)", borderRadius: 12, padding: "12px 13px", fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.6 }}>
+          <div style={{ color: "var(--accent)", fontWeight: 700, fontSize: 10, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>{thesis.fundName}</div>
           {thesis.sectors.slice(0, 4).join(" · ")}
           {thesis.sectors.length > 4 && " +" + (thesis.sectors.length - 4)}
         </div>

@@ -119,13 +119,13 @@ export default function ProfilePanel({ company, onClose, lists, onAddToList, enr
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10 }}>
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 3 }}>
-                <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 19, color: "#e0e4f0" }}>{company.name}</h2>
+                <h2 style={{ fontWeight: 700, fontSize: 20, color: 'var(--text-primary)', letterSpacing: '-.02em' }}>{company.name}</h2>
                 <span className="score" style={{ background: scoreBg(company.thesisScore), color: scoreColor(company.thesisScore) }}>
                   <IcoTarget />{company.thesisScore} Fit
                 </span>
               </div>
               <a href={"https://" + company.website} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}
-                style={{ color: "#4f7cff", fontSize: 11.5, display: "flex", alignItems: "center", gap: 4, textDecoration: "none" }}>
+                style={{ color: 'var(--accent)', fontSize: 12, display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none', transition: 'opacity .15s' }}>
                 <IcoGlobe />{company.website}<IcoExtLink />
               </a>
             </div>
@@ -214,11 +214,11 @@ export default function ProfilePanel({ company, onClose, lists, onAddToList, enr
             <div className="stitle">Thesis Fit Analysis</div>
             <div className="sbox">
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 26, color: scoreColor(company.thesisScore) }}>
+                <div style={{ fontWeight: 800, fontSize: 28, color: scoreColor(company.thesisScore), letterSpacing: '-.03em' }}>
                   {company.thesisScore}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 10, color: "#3d4258", marginBottom: 5, fontFamily: "'Syne',sans-serif", fontWeight: 700, letterSpacing: .5 }}>MATCH SCORE</div>
+                  <div style={{ fontSize: 10, color: "#3d4258", marginBottom: 5, fontWeight: 700, letterSpacing: .5 }}>MATCH SCORE</div>
                   <div className="strack">
                     <div className="sfill" style={{ width: company.thesisScore + "%", background: scoreColor(company.thesisScore) }} />
                   </div>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { IcoPlus, IcoList, IcoDownload, IcoTrash, IcoX, IcoChevD, IcoChevU } from "./Icons";
 
-const scoreColor = (s) => s >= 80 ? "#00d4a0" : s >= 60 ? "#f5a623" : "#f06060";
-const scoreBg = (s) => s >= 80 ? "rgba(0,212,160,0.12)" : s >= 60 ? "rgba(245,166,35,0.12)" : "rgba(240,96,96,0.12)";
+const scoreColor = (s) => s >= 80 ? '#30d158' : s >= 60 ? '#ff9f0a' : '#ff453a';
+const scoreBg = (s) => s >= 80 ? 'rgba(48,209,88,0.12)' : s >= 60 ? 'rgba(255,159,10,0.12)' : 'rgba(255,69,58,0.12)';
 
 export default function ListsView({ lists, setLists, onSelectCompany }) {
   const [name, setName] = useState("");
@@ -78,8 +78,8 @@ export default function ListsView({ lists, setLists, onSelectCompany }) {
       {lists.length === 0 && (
         <div className="emp">
           <div style={{ fontSize: 32 }}>📂</div>
-          <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 15, color: "#6b7490" }}>No lists yet</div>
-          <div style={{ fontSize: 12 }}>Create a list and save companies from any company profile.</div>
+          <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--text-tertiary)' }}>No lists yet</div>
+          <div style={{ fontSize: 13 }}>Create a list and save companies from any company profile.</div>
         </div>
       )}
 
@@ -87,7 +87,7 @@ export default function ListsView({ lists, setLists, onSelectCompany }) {
         <div key={list.id} className="lcard">
           <div className="lch" onClick={() => setOpen(o => ({ ...o, [list.id]: !o[list.id] }))}>
             <IcoList />
-            <span style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 13.5 }}>{list.name}</span>
+            <span style={{ fontWeight: 700, fontSize: 14, letterSpacing: '-.01em' }}>{list.name}</span>
             <span className="nav-badge">{list.companies.length}</span>
             <div style={{ marginLeft: "auto", display: "flex", gap: 5 }} onClick={e => e.stopPropagation()}>
               <button className="btn btn-ghost btn-sm" onClick={() => exportCSV(list)}><IcoDownload />CSV</button>
