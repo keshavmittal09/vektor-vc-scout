@@ -2,11 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    ignoreDuringBuilds: true,  // ← add this
+    ignoreDuringBuilds: true,
   },
-};
-const nextConfig = {
-  reactStrictMode: true,
 };
 
 export default nextConfig;
