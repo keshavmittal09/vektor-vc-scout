@@ -8,7 +8,7 @@ import ProfilePanel from "../components/ProfilePanel";
 import ListsView from "../components/ListsView";
 import SavedView from "../components/SavedView";
 import ThesisView from "../components/ThesisView";
-import { IcoSearch, IcoLogo, IcoSave, IcoCheck } from "../components/Icons";
+import { IcoSearch, IcoLogo, IcoSave, IcoCheck, IcoSun, IcoMoon } from "../components/Icons";
 import { useEffect } from "react";
 
 /* ── Toast ───────────────────────────────────────────────────────────────── */
@@ -53,7 +53,7 @@ function SaveModal({ onSave, onClose }) {
 }
 
 /* ── Root Page ───────────────────────────────────────────────────────────── */
-export default function Home() {
+export default function Home({ theme, toggleTheme }) {
   const [view, setView] = useState("companies");
   const [selected, setSelected] = useState(null);
   const [lists, setLists] = useLocalStorage("vk_lists", []);
@@ -116,7 +116,10 @@ export default function Home() {
             <button className="btn btn-ghost btn-sm" onClick={() => setShowSave(true)}>
               <IcoSave />Save Search
             </button>
-            <div style={{ width: 30, height: 30, borderRadius: "50%", background: "linear-gradient(135deg,#2997ff,#bf5af2)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 12, color: "#fff", flexShrink: 0, letterSpacing: '-.02em' }}>
+            <button className="theme-toggle" onClick={toggleTheme} title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
+              {theme === 'dark' ? <IcoSun /> : <IcoMoon />}
+            </button>
+            <div style={{ width: 30, height: 30, borderRadius: "50%", background: "linear-gradient(135deg, var(--accent), var(--purple, #a855f7))", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 12, color: "#fff", flexShrink: 0, letterSpacing: '-.02em' }}>
               A
             </div>
           </div>

@@ -103,15 +103,15 @@ export default function ListsView({ lists, setLists, onSelectCompany }) {
           {open[list.id] && (
             <div className="lcb">
               {list.companies.length === 0 && (
-                <div style={{ padding: "10px 14px", color: "#3d4258", fontSize: 12 }}>
+                <div style={{ padding: "10px 14px", color: "var(--text-muted)", fontSize: 13 }}>
                   No companies saved. Open a profile and click Save.
                 </div>
               )}
               {list.companies.map(c => (
                 <div key={c.id} className="lcr" onClick={() => onSelectCompany(c)}>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: 500, color: "#e0e4f0", fontSize: 13 }}>{c.name}</div>
-                    <div style={{ fontSize: 11, color: "#3d4258" }}>{c.sector} · {c.stage}</div>
+                    <div style={{ fontWeight: 600, color: "var(--text-primary)", fontSize: 13.5 }}>{c.name}</div>
+                    <div style={{ fontSize: 11.5, color: "var(--text-muted)" }}>{c.sector} · {c.stage}</div>
                   </div>
                   <span className="score" style={{ background: scoreBg(c.thesisScore), color: scoreColor(c.thesisScore), fontSize: 11 }}>
                     {c.thesisScore}
