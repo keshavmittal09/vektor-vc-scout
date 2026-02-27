@@ -22,7 +22,7 @@ export default function SavedView({ savedSearches, setSavedSearches, onRun }) {
           <div style={{ flex: 1 }}>
             <div style={{ fontWeight: 500, color: "#e0e4f0", fontSize: 13 }}>{s.name}</div>
             <div style={{ fontSize: 11, color: "#3d4258", marginTop: 2 }}>
-              {s.q ? `"${s.q}"` : "All companies"} · {new Date(s.savedAt).toLocaleDateString()}
+              {s.q ? <>&ldquo;{s.q}&rdquo;</> : "All companies"} · {new Date(s.savedAt).toLocaleDateString()}
             </div>
           </div>
           <button className="btn btn-primary btn-sm" onClick={() => onRun(s)}>Run</button>
